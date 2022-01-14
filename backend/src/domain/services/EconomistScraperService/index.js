@@ -1,5 +1,8 @@
-class EconomistScraperService {
-  constructor(page) {
+import Service from "../Service";
+
+class EconomistScraperService extends Service {
+  constructor(page, repository) {
+    super(repository);
     this.page = page;
   }
 
@@ -50,7 +53,7 @@ class EconomistScraperService {
   /**
    * Method scrapes and returns all articles on economist home page in json format
    */
-  async getAllArticles() {
+  async scrapeAllArticles() {
     /**
      * Articles array item
      * { title: string, paragraphs?: string[], url: string, imageUrl?: string }
@@ -106,11 +109,24 @@ class EconomistScraperService {
             article.imageUrl = await this.getImageSrc(articleImages[0]);
           }
 
-          // Add new article
-          articles.push(article);
+          try {
+            const savedArticle = await this.repository.save({
+              ...article,
+  
+              // implde paragphs with ^^^ delimeter
+              paragraphs: article.paragraphs.join('^^^')
+            });
+  
+            // Add new article
+            articles.push(savedArticle);
+          } catch (e) {
+            // just here to skip any errors uncluding errors about saving duplicate entries
+          }
         }
       }
     }
+
+    console.log('saved articles', articles);
 
     return articles;
   }

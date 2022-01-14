@@ -21,6 +21,8 @@ import constructApplicationLayer from '@application';
 import config from '@common/config/env';
 import { responseBuilderMiddleware } from '@infrastructure/responseBuilder';
 
+import setupCronJobs from './crons';
+
 /**
  * Construct server instance and run it.
  */
@@ -65,6 +67,9 @@ const constructAndRunServer = async () => {
     };
 
     HttpServer(serverConfig);
+
+    // Set cron jobs
+    setupCronJobs(services);
   } catch (err) {
     // This should catch only fatal, server initialization and other tools and development errors.
     // Business logic errors should go to error handling, sentry and custom, middlewares.

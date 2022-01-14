@@ -4,9 +4,11 @@ import { DB_TYPES } from '../types';
 
 // models
 import User from './user';
+import Article from './article';
 
 export const modelClasses = {
   User,
+  Article,
 };
 
 export default async (config) => {

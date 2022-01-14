@@ -6,6 +6,6 @@ export default (repositories, { puppeteerPage }) => {
   return {
     UsersService: new UsersService(repositories.UsersRepository),
     AuthService: AuthService(repositories),
-    EconomistScraperService: new EconomistScraperService(puppeteerPage),
+    EconomistScraperService: new EconomistScraperService(puppeteerPage, repositories.ArticleRepository),
   };
 };

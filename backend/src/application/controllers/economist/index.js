@@ -1,7 +1,7 @@
 import validate from '@application/middlewares/httpRequest/validate';
 import validationSchemes from '@infrastructure/validation/controllers/economist';
 import getAllArticles from './getAllArticles';
-import getArticleFromUrl from './getArticleFromUrl';
+import getArticleById from './getArticleById';
 
 export default (
   { EconomistScraperUseCases },
@@ -18,12 +18,12 @@ export default (
   },
 
   {
-    handler: getArticleFromUrl(EconomistScraperUseCases),
-    method: 'post',
-    path: '/economist/article-from-url',
+    handler: getArticleById(EconomistScraperUseCases),
+    method: 'get',
+    path: '/economist/articles/:id',
     middlewares: [
       Authenticate,
-      validate(validationSchemes.articleFromUrl.body, 'body'),
+      validate(validationSchemes.articleById.params, 'params'),
     ],
     environments: ['prod', 'dev', 'staging'],
   },

@@ -29,6 +29,7 @@
     "lodash": "^4.17.21",
     "module-alias": "^2.2.2",
     "moment": "^2.29.1",
+    "node-cron": "^3.0.0",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
     "puppeteer": "^13.0.1",

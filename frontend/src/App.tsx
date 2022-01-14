@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+import axios from 'axios';
+
+// routes
+import Router from './routes';
+
+// theme
+import ThemeConfig from './theme';
+import GlobalStyles from './theme/globalStyles';
+
+// components
+import ThemePrimaryColor from './components/ThemePrimaryColor';
+import ThemeLocalization from './components/ThemeLocalization';
+
+import { ToastContainerWrapper } from './services/notification';
+
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+axios.defaults.headers.common.Accept = 'application/json, text/plain, */*';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeConfig>
+      <ThemePrimaryColor>
+        <ThemeLocalization>
+          <GlobalStyles />
+          <Router />
+          <ToastContainerWrapper />
+        </ThemeLocalization>
+      </ThemePrimaryColor>
+    </ThemeConfig>
   );
 }
-
-export default App;

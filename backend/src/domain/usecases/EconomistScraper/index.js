@@ -1,7 +1,7 @@
 import GetAllArticles from './GetAllArticles';
-import GetArticleFromUrl from './GetArticleFromUrl';
+import GetArticleById from './GetArticleById';
 
 export default (EconomistScraperService) => ({
   GetAllArticles: new GetAllArticles(EconomistScraperService),
-  GetArticleFromUrl: new GetArticleFromUrl(EconomistScraperService)
+  GetArticleById: new GetArticleById(EconomistScraperService)
 });

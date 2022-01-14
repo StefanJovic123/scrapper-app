@@ -4,6 +4,6 @@ export default class GetAllArticles {
   }
 
   async execute() {
-    return this.economistScraperService.getAllArticles();
+    return this.economistScraperService.getAll();
   }
 }
