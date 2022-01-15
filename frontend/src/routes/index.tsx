@@ -11,7 +11,7 @@ import AuthGuard from '../guards/AuthGuard';
 import Login from '../pages/authentication/Login';
 import Register from '../pages/authentication/Register';
 import Articles from '../pages/Articles';
-import ArticleDetails from '../pages/ArticleDetails';
+import ArticleDetails from '../pages/ArticleDetails/ArticleDetails';
 
 export default function Router() {
   return useRoutes([

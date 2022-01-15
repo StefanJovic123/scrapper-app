@@ -138,7 +138,7 @@ export const db = factory({
     subtitle: () => '',
     paragraphs: () => '',
     url: () => ''
-  },
+  }
 });
 
 // create mock data

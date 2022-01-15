@@ -1,6 +1,6 @@
-import { render, waitFor } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import { useLogin } from "../../hooks/authHooks";
+import { render, waitFor } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { useLogin } from '../../hooks/authHooks';
 import Login from './Login';
 
 const mockedUsedNavigate = jest.fn();
@@ -26,8 +26,8 @@ describe('<Login />', () => {
 
     expect(getByText('Sign in')).toBeInTheDocument();
     expect(getByText('Enter your details below.')).toBeInTheDocument();
-    expect(getByText("Don’t have an account?")).toBeInTheDocument();
-    expect(getByText("Get started")).toBeInTheDocument();
+    expect(getByText('Don’t have an account?')).toBeInTheDocument();
+    expect(getByText('Get started')).toBeInTheDocument();
     expect(getByTestId('login-form')).toBeInTheDocument();
   });
-})
+});

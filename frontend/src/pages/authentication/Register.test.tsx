@@ -1,7 +1,7 @@
-import { render } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import { useRegister } from "../../hooks/authHooks";
-import Register from "./Register";
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { useRegister } from '../../hooks/authHooks';
+import Register from './Register';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-helmet-async');
@@ -27,4 +27,4 @@ describe('<Register />', () => {
     expect(getAllByText('Already have an account?')[0]).toBeInTheDocument();
     expect(getAllByText('Login')[0]).toBeInTheDocument();
   });
-})
+});

@@ -46,7 +46,7 @@ export default function LoginForm({ onSubmit, isLoading }: Props) {
 
   return (
     <FormikProvider value={formik}>
-      <Form autoComplete="off" noValidate onSubmit={handleSubmit} data-testid='login-form'>
+      <Form autoComplete="off" noValidate onSubmit={handleSubmit} data-testid="login-form">
         <Stack spacing={3}>
           {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
 
