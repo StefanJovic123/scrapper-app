@@ -24,7 +24,7 @@ export default function ArticleInfo({
   ...other
 }: ArticleInfoProps) {
   return (
-    <Card sx={{ mb: 3 }}>
+    <Card sx={{ mb: 3 }} data-testid="article-info">
       <RootStyle {...other}>
         <Typography variant="h3" gutterBottom>
           {title}
@@ -36,7 +36,7 @@ export default function ArticleInfo({
 
         <Box
           component="img"
-          alt="empty content"
+          alt="article-cover-image"
           src={img || '/static/illustrations/illustration_empty_content.svg'}
           sx={{ width: '100%', height: 340, mb: 3, objectFit: 'cover' }}
         />

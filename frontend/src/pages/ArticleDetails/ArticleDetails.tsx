@@ -18,7 +18,12 @@ export default function ArticleDetails() {
   return (
     <Container maxWidth="lg">
       {isLoading && (
-        <Skeleton variant="rectangular" width="100%" sx={{ height: 200, borderRadius: 2, mt: 4 }} />
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          sx={{ height: 200, borderRadius: 2, mt: 4 }}
+          data-testid="skeleton-loader"
+        />
       )}
 
       {!isLoading && (

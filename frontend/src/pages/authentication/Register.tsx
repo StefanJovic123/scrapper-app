@@ -1,14 +1,13 @@
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Card, Link, Container, Typography } from '@mui/material';
+import { Link, Container, Typography } from '@mui/material';
 
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 
 // components
 import Page from '../../components/Page';
-import { MHidden } from '../../components/@material-extend';
 import { RegisterForm } from '../../components/authentication/register';
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -34,14 +33,12 @@ export default function Register() {
         <ContentStyle>
           <RegisterForm />
 
-          <MHidden width="smUp">
-            <Typography variant="subtitle2" sx={{ mt: 3, textAlign: 'center' }}>
-              Already have an account?&nbsp;
-              <Link to={PATH_AUTH.login} component={RouterLink}>
-                Login
-              </Link>
-            </Typography>
-          </MHidden>
+          <Typography variant="subtitle2" sx={{ mt: 3, textAlign: 'center' }}>
+            Already have an account?
+            <Link to={PATH_AUTH.login} component={RouterLink}>
+              Login
+            </Link>
+          </Typography>
         </ContentStyle>
       </Container>
     </RootStyle>

@@ -27,7 +27,12 @@ type InitialValues = {
   afterSubmit?: string;
 };
 
-export default function RegisterForm() {
+interface RegisterFormProps {
+  isLoading?: boolean;
+  onSubmit?: (values: InitialValues) => void;
+}
+
+export default function RegisterForm({ isLoading, onSubmit }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const RegisterSchema = Yup.object().shape({
@@ -49,22 +54,7 @@ export default function RegisterForm() {
     },
     validationSchema: RegisterSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
-      // try {
-      //   await register(values.email, values.password, values.firstName, values.lastName);
-      //   enqueueSnackbar('Register success', {
-      //     variant: 'success',
-      //     action: (key) => (
-      //       <MIconButton size="small" onClick={() => closeSnackbar(key)}>
-      //         <Icon icon={closeFill} />
-      //       </MIconButton>
-      //     )
-      //   });
-      // } catch (error) {
-      //   console.error(error);
-      //   if (isMountedRef.current) {
-      //     setErrors({ afterSubmit: error.message });
-      //   }
-      // }
+      onSubmit && onSubmit(values);
     }
   });
 
@@ -128,7 +118,7 @@ export default function RegisterForm() {
             size="large"
             type="submit"
             variant="contained"
-            loading={isSubmitting}
+            loading={isLoading}
           >
             Register
           </LoadingButton>

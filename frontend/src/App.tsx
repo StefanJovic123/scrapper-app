@@ -4,6 +4,7 @@ import axios from 'axios';
 
 // routes
 import Router from './routes';
+import { BrowserRouter } from 'react-router-dom';
 
 // theme
 import ThemeConfig from './theme';
@@ -20,14 +21,16 @@ axios.defaults.headers.common.Accept = 'application/json, text/plain, */*';
 
 export default function App() {
   return (
-    <ThemeConfig>
-      <ThemePrimaryColor>
-        <ThemeLocalization>
-          <GlobalStyles />
-          <Router />
-          <ToastContainerWrapper />
-        </ThemeLocalization>
-      </ThemePrimaryColor>
-    </ThemeConfig>
+    <BrowserRouter>
+      <ThemeConfig>
+        <ThemePrimaryColor>
+          <ThemeLocalization>
+            <GlobalStyles />
+            <Router />
+            <ToastContainerWrapper />
+          </ThemeLocalization>
+        </ThemePrimaryColor>
+      </ThemeConfig>
+    </BrowserRouter>
   );
 }

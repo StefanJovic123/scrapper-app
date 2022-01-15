@@ -6,7 +6,7 @@ import { PATH_APP } from '../../routes/paths';
 
 export default function Articles() {
   const navigate = useNavigate();
-  const { data: articles, isLoading } = useArticles();
+  const { data, isLoading } = useArticles();
 
   const goToArticle = (id: string) => {
     navigate(PATH_APP.article(id));
@@ -15,11 +15,17 @@ export default function Articles() {
   return (
     <Container maxWidth="md">
       {isLoading && (
-        <Skeleton variant="rectangular" width="100%" sx={{ height: 200, borderRadius: 2, mt: 4 }} />
+        <Skeleton
+          data-testid="skeleton-loader"
+          variant="rectangular"
+          width="100%"
+          sx={{ height: 200, borderRadius: 2, mt: 4 }}
+        />
       )}
 
-      {articles?.map((item, index) => (
+      {data?.map((item, index) => (
         <Article
+          data-testid="single-article"
           key={index}
           title={item.title}
           img={item.imageUrl}
