@@ -11,6 +11,6 @@ export const login = (variables: LoginRequest): Promise<User> => {
 
 export const register = (variables: RegisterRequest): Promise<User> => {
   return axios
-    .post(`${BASE_API_URL}/register`, variables)
+    .post(`${BASE_API_URL}/signup`, variables)
     .then((res: AxiosResponse<ApiResponse<User>>) => res.data.data);
 };

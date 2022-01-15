@@ -1,14 +1,15 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 // material
 import { styled } from '@mui/material/styles';
-import { Link, Container, Typography } from '@mui/material';
-
-// routes
-import { PATH_AUTH } from '../../routes/paths';
+import { Container } from '@mui/material';
 
 // components
 import Page from '../../components/Page';
 import { RegisterForm } from '../../components/authentication/register';
+import { useRegister } from '../../hooks/authHooks';
+import { useEffect } from 'react';
+import { PATH_APP } from '../../routes/paths';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
@@ -27,18 +28,25 @@ const ContentStyle = styled('div')(({ theme }) => ({
 }));
 
 export default function Register() {
+  const { mutate, isLoading, isSuccess } = useRegister();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(PATH_APP.root);
+    }
+  }, [mutate, isLoading, navigate, isSuccess]);
+
   return (
     <RootStyle title="Register">
       <Container>
         <ContentStyle>
-          <RegisterForm />
-
-          <Typography variant="subtitle2" sx={{ mt: 3, textAlign: 'center' }}>
-            Already have an account?
-            <Link to={PATH_AUTH.login} component={RouterLink}>
-              Login
-            </Link>
-          </Typography>
+          <RegisterForm
+            isLoading={isLoading}
+            onSubmit={(values) => {
+              mutate(values);
+            }}
+          />
         </ContentStyle>
       </Container>
     </RootStyle>

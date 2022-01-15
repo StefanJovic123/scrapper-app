@@ -7,7 +7,16 @@ import Service from '../Service';
 class UsersService extends Service {
   async save(data) {
     data.password = await hash(data.password);
-    return this.repository.save(data);
+
+    const user = await this.repository.save(data);
+
+    const generator = new NodeJsonWebTokenJwtPort(config.General);
+    const token = generator.generateJwt({ id: user.id });
+
+    return {
+      ...user,
+      jwt: token
+    }
   }
 
   async login(email, password) {

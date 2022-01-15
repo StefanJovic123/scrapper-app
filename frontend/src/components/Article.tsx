@@ -6,7 +6,7 @@ const RootStyle = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: theme.spacing(8, 2),
+  padding: theme.spacing(4, 2),
   '&:hover': { opacity: 0.8, cursor: 'pointer' }
 }));
 
@@ -27,7 +27,7 @@ export default function Article({ title, description, img, ...other }: ArticlePr
           sx={{ width: '100%', height: 340, mb: 3, objectFit: 'cover' }}
         />
 
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h5" gutterBottom>
           {title}
         </Typography>
 

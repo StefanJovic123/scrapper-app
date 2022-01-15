@@ -6,7 +6,7 @@ const RootStyle = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: theme.spacing(8, 2)
+  padding: theme.spacing(0, 2)
 }));
 
 interface ArticleInfoProps extends BoxProps {

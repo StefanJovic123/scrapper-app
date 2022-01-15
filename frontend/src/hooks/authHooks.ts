@@ -19,7 +19,10 @@ export const useLogin = () => {
 export const useRegister = () => {
   return useMutation('register', register, {
     onMutate: async (data: RegisterRequest) => data,
-    onSuccess: () => {
+    onSuccess: (response: User) => {
+      console.log('response !!!', response);
+
+      localStorage.setItem('token', response.jwt);
       success('Welcome!');
     },
     onError: () => {

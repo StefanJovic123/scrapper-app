@@ -21,7 +21,7 @@ export default function ArticleDetails() {
         <Skeleton
           variant="rectangular"
           width="100%"
-          sx={{ height: 200, borderRadius: 2, mt: 4 }}
+          sx={{ height: 200, borderRadius: 2 }}
           data-testid="skeleton-loader"
         />
       )}
